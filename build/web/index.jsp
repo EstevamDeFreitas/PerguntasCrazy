@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body>
-        <header class="p-1 bg-dark text-white mb-3">
+        <header class="p-1 bg-dark text-white mb-5">
             <div class="d-flex flex-wrap justify-content-center p-3">
                 <a href="" class="fs-4 text-decoration-none text-white me-5 me-md-auto">Perguntas<strong class="text-info">Crazy</strong></a>
                 <a href="novaPergunta.jsp" class="btn btn-outline-info">Nova Pergunta</a>
@@ -40,10 +40,10 @@
             
                 for(Pergunta pergunta : perguntas){
             %>
-            <div class="card mb-3">
+            <div class="card mb-5 shadow">
                 <div class="card-body">
                     <div class="card-title d-inline">
-                        <strong class="align-top"><%= pergunta.getAvaliacao() %></strong>
+                        <strong class="align-top <%= pergunta.getAvaliacao() > 0 ? "text-info" : "text-danger" %>"><%= pergunta.getAvaliacao() %></strong>
                         <a href="pergunta?acao=vote&vote=up&id=<%= pergunta.getId() %>" class="material-symbols-rounded text-decoration-none text-dark">arrow_upward</a>
                         <a href="pergunta?acao=vote&vote=down&id=<%= pergunta.getId() %>" class="material-symbols-rounded text-decoration-none text-dark">arrow_downward</a>
                     </div>
@@ -67,7 +67,7 @@
                 <ul class="list-group list-group-flush">
                     <% for(Pergunta resposta : pergunta.getRespostas()){ %>
                     <li class="list-group-item">
-                        <strong class="align-top"><%= resposta.getAvaliacao() %></strong>
+                        <strong class="align-top <%= resposta.getAvaliacao() > 0 ? "text-info" : "text-danger" %>"><%= resposta.getAvaliacao() %></strong>
                         <a href="pergunta?acao=vote&vote=up&id=<%= resposta.getId() %>" class="material-symbols-rounded text-decoration-none text-dark">arrow_upward</a>
                         <a href="pergunta?acao=vote&vote=down&id=<%= resposta.getId() %>" class="material-symbols-rounded text-decoration-none text-dark">arrow_downward</a>
                         <h6 class="card-subtitle mb-2 text-muted"><%= resposta.getTitulo() %></h6>
